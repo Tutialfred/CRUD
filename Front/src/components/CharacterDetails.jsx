@@ -51,7 +51,7 @@ function CharacterDetails() {
           <h2>{character.status}</h2>
           <h2 className='title'>Especie:</h2> 
           <h2>{character.species}</h2>
-          <button onClick={handleDelete}>Eliminar</button>
+          <button onClick={handleDelete} className='eliminate'>Eliminar</button>
 
         </div>
       ) : (

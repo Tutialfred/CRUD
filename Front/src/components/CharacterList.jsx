@@ -35,9 +35,9 @@ function CharacterList(){
             <li>
                  <Link to="/create">Crear personaje</Link>
             </li>
-            
+         
             <li>
-                <Link to="/actualizar">Actualizar personaje</Link>
+            <Link to="/actualizar" >Actualizar</Link>
             </li>
 
 
