@@ -2,9 +2,42 @@ const express = require("express");
 const app = express();
 const server = 3000;
 const axios = require("axios");
-app.use(express.json()); // Middleware para parsear JSON
+const cors = require('cors');
+
+
+const router = express.Router();
+const routes = require("./routes/index")
 
 app.listen(server);
+app.use(express.json());
+app.use(cors({ origin: 'http://localhost:5173' })); // Configurar CORS para permitir solicitudes desde el puerto de tu aplicación de React
+
+
+
+
+const characters = [];
+let idCounter = 1; // Inicialización del contador de IDs
+
+
+
+
+// app.get("/charactersown/:id", async (req, res) => {
+//   try {
+
+//     const id = req.params.id
+//     const response = await axios.get(characters);
+
+//     if(response.data.results[id]){
+//       res.json(response.data.results[id]);
+//     } else {
+//       res.status(404).json({ error: 'Personaje no encontrado' });
+//     }
+  
+//   } 
+//   catch (error) {
+//     res.status(500).json({ error: error.message });
+//   }
+// });
 
 //* READ
 
@@ -17,10 +50,10 @@ app.listen(server);
     try {
 
       const id = req.params.id
-      const response = await axios.get('https://rickandmortyapi.com/api/character');
+        const response = await axios.get(`http://localhost:3000/characterown/?id=${id}`);
 
-      if(response.data.results[id]){
-        res.json(response.data.results[id]);
+      if(response[id]){
+        res.json(response.id);
       } else {
         res.status(404).json({ error: 'Personaje no encontrado' });
       }
@@ -80,10 +113,11 @@ app.get('/characters', async (req, res) => {
 
 
 
+
+
 //! CREATE
 //! ✅
-const characters = [];
-let idCounter = 1; // Inicialización del contador de IDs
+
 
 
 // CREATE - Crear un nuevo personaje
@@ -109,11 +143,13 @@ app.post('/characters', (req, res) => {
 
 
 
+// 
 
 
-
-
-
+app.get("/characterown", async(req, res) =>{
+  res.json(characters)
+  // res.json(characters)
+}) 
 
 
 
@@ -175,7 +211,7 @@ app.put('/characters/:id', (req, res) => {
   console.log(characters)
 });
 
-
+ 
 
 
 
@@ -199,6 +235,8 @@ app.delete('/characters/:id', (req, res) => {
 
 
 
+
+console.log("App working on portal 3000");
 
 
 
