@@ -3,27 +3,27 @@ import { useEffect, useState } from "react";
 import { Outlet, Link } from "react-router-dom"
 import "./CharacterList.css"
 
-function NavPage(props){
-    return(
-        <div>
-            <p>Siguiente →</p>
-            <button onClick={
-                () => {props.setPage(props.page + 1) }
-            } className="boton2"> {props.page }</button>
-        </div>
-    )
-}
+// function NavPage(props){
+//     return(
+//         <div>
+//             <p>Siguiente →</p>
+//             <button onClick={
+//                 () => {props.setPage(props.page + 1) }
+//             } className="boton2"> {props.page }</button>
+//         </div>
+//     )
+// }
 
-function NavPage2(props){
-    return(
-        <div>
-            <p>← Atras </p>
-            <button onClick={
-                () => {props.setPage(props.page - 1) }
-            } className="boton2"> {props.page -1}</button>
-        </div>
-    )
-}
+// function NavPage2(props){
+//     return(
+//         <div>
+//             <p>← Atras </p>
+//             <button onClick={
+//                 () => {props.setPage(props.page - 1) }
+//             } className="boton2"> {props.page -1}</button>
+//         </div>
+//     )
+// }
 
 function CharacterList(){
 
@@ -53,7 +53,7 @@ function CharacterList(){
             <nav>
         <ul>
             <li>
-                    <Link to="/create">Crear personaje</Link>
+                 <Link to="/create">Crear personaje</Link>
             </li>
             
             <li>
@@ -69,10 +69,10 @@ function CharacterList(){
             </div>
 
 
-            <div className="flecha">
+            {/* <div className="flecha">
             <NavPage2 page={page} setPage={setPage}/>
             <NavPage page={page} setPage={setPage}/>
-            </div>
+            </div> */}
 
             <div className="cartas-container">
 
@@ -81,8 +81,11 @@ function CharacterList(){
                       return(
                           <Link to={`/characters/${characters.id}`}key={characters.id} className="carta">
                   <div className="personaje">
-                <h2>{characters.name}</h2> 
+                <h2>Nombre</h2> 
+                <h3>{characters.name}</h3> 
+                <h2>Estado</h2> 
                 <h3>{characters.status}</h3>
+                <h2>Especie</h2> 
                 <h3>{characters.species}</h3>
               </div>
             </Link>    

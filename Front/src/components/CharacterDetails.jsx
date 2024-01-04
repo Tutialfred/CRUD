@@ -4,12 +4,12 @@ import axios from 'axios';
 
 function CharacterDetails() {
   const { id } = useParams();
-  const [character, setCharacter] = useState(null);
+  const [character, setCharacter] = useState([]);
 
   useEffect(() => {
     async function fetchCharacter() {
       try {
-        const response = await axios.get(`http://localhost:3000/characterown/${id+1}`);
+        const response = await axios.get(`http://localhost:3000/characterown/${id}`);
         setCharacter(response.data);
       } catch (error) {
         console.error('Error fetching character:', error);
@@ -27,7 +27,6 @@ function CharacterDetails() {
           <img src={character.image} alt={character.name} />
           <h2>{character.status}</h2>
           <h2>{character.species}</h2>
-          {/* Mostrar otros detalles del personaje */}
         </div>
       ) : (
         <p>Cargando...</p>
