@@ -5,14 +5,9 @@ const axios = require("axios");
 const cors = require('cors');
 
 
-const router = express.Router();
-const routes = require("./routes/index")
-
 app.listen(server);
 app.use(express.json());
 app.use(cors({ origin: 'http://localhost:5173' })); // Configurar CORS para permitir solicitudes desde el puerto de tu aplicación de React
-
-
 
 
 const characters = [];
@@ -20,57 +15,31 @@ let idCounter = 1; // Inicialización del contador de IDs
 
 
 
+app.get("/characters/:id", async (req, res) => {
+  try {
 
-// app.get("/charactersown/:id", async (req, res) => {
-//   try {
+    const id = req.params.id
+    const response = await axios.get(`http://localhost:3000/characterown/?id=${id}`);
 
-//     const id = req.params.id
-//     const response = await axios.get(characters);
-
-//     if(response.data.results[id]){
-//       res.json(response.data.results[id]);
-//     } else {
-//       res.status(404).json({ error: 'Personaje no encontrado' });
-//     }
-  
-//   } 
-//   catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// });
-
-//* READ
-
-
-
-
-  // ✅✅✅✅✅✅ 
-  // req.param
-  app.get("/characters/:id", async (req, res) => {
-    try {
-
-      const id = req.params.id
-        const response = await axios.get(`http://localhost:3000/characterown/?id=${id}`);
-
-      if(response[id]){
-        res.json(response.id);
-      } else {
-        res.status(404).json({ error: 'Personaje no encontrado' });
-      }
-    
-    } 
-    catch (error) {
-      res.status(500).json({ error: error.message });
+    if (response[id]) {
+      res.json(response.id);
+    } else {
+      res.status(404).json({ error: 'Personaje no encontrado' });
     }
-  });
+
+  }
+  catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 
 
 
-// Ruta para filtrar por nombre, estado o especie
-// req.query
+
+
 app.get('/characters', async (req, res) => {
-  const { name, status, species, id} = req.query;
+  const { name, status, species, id } = req.query;
 
   try {
     const response = await axios.get('https://rickandmortyapi.com/api/character/');
@@ -88,9 +57,6 @@ app.get('/characters', async (req, res) => {
     if (species) {
       filteredCharacters = filteredCharacters.filter(char => char.species.toLowerCase() === species.toLowerCase());
     }
-    // if (id) {
-    //   filteredCharacters = filteredCharacters.filter(char => char.id == Number(id));
-    // }
 
     if (Object.keys(req.query).length === 0) {
       res.json(filteredCharacters);
@@ -107,20 +73,7 @@ app.get('/characters', async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-//! CREATE
-//! ✅
-
-
-
-// CREATE - Crear un nuevo personaje
+//! rear un nuevo personaje
 app.post('/characters', (req, res) => {
   const { name, status, species } = req.body; // Obtener datos del cuerpo de la solicitud
 
@@ -146,41 +99,18 @@ app.post('/characters', (req, res) => {
 // 
 
 
-app.get("/characterown", async(req, res) =>{
+app.get("/characterown", async (req, res) => {
   res.json(characters)
   // res.json(characters)
-}) 
+})
 
 
 
 
 
 
+//! Actualizar un personaje por ID
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//! UPDATE - Actualizar un personaje por ID
-//! ✅
 app.put('/characters/:id', (req, res) => {
   const { id } = req.params;
   const { name, status, species } = req.body;
@@ -211,14 +141,12 @@ app.put('/characters/:id', (req, res) => {
   console.log(characters)
 });
 
- 
 
 
 
 
 
-//! DELETE - Eliminar un personaje por ID
-//! ✅
+//! Eliminar un personaje por ID
 app.delete('/characters/:id', (req, res) => {
   const { id } = req.params;
 
@@ -233,12 +161,4 @@ app.delete('/characters/:id', (req, res) => {
 
 
 
-
-
-
 console.log("App working on portal 3000");
-
-
-
-
-

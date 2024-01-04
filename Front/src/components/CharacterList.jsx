@@ -3,12 +3,6 @@ import { useEffect, useState } from "react";
 import { Outlet, Link } from "react-router-dom"
 import "./CharacterList.css"
 
-// import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-
-import CreateCharacter from "./CreateCharacter";
-import UpdateCharacter from "./UpdateCharacter";
-import DeleteCharacter from "./DeleteCharacter";
-
 function NavPage(props){
     return(
         <div>
@@ -33,11 +27,10 @@ function NavPage2(props){
 
 function CharacterList(){
 
+
     // UseState
     const [characters, setCharacters] = useState([]);
     const [page, setPage] = useState(1)
-
-
 
 
 
@@ -54,111 +47,32 @@ function CharacterList(){
         getApi();
       }, [page]);
 
-
-
-    return(
-
-        
+    return(   
         <div>
-        
-
-
             <div>
             <nav>
         <ul>
-
-            {/* <li>
-                    <Link to="/">Home</Link>
-            </li> */}
-            
-
-
             <li>
                     <Link to="/create">Crear personaje</Link>
-
             </li>
             
-
-            
             <li>
-
                 <Link to="/actualizar">Actualizar personaje</Link>
             </li>
-           
-           
+            
             <li>
-
                 <Link to="/eliminar">Eliminar personaje</Link>
             </li>
 
         </ul>
     </nav>
-
-
-
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             <div className="flecha">
             <NavPage2 page={page} setPage={setPage}/>
             <NavPage page={page} setPage={setPage}/>
             </div>
-
-
-
 
             <div className="cartas-container">
 
@@ -170,17 +84,8 @@ function CharacterList(){
                 <h2>{characters.name}</h2> 
                 <h3>{characters.status}</h3>
                 <h3>{characters.species}</h3>
-                {/* <img src={characters.image} alt={characters.name} /> */}
               </div>
             </Link>    
-            // <div>
-            //     <h1>s</h1>
-            // </div>
-            
-            
-            
-            
-            
             )
         })
     }

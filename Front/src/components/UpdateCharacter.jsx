@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './updateCharacter.css';
 
-
-
 function UpdateCharacter() {
   const [id, setId] = useState('');
   const [name, setName] = useState('');
