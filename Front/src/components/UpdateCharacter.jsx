@@ -13,6 +13,7 @@ function UpdateCharacter() {
     // Lógica para obtener los datos del personaje a actualizar, por ejemplo, mediante un ID
     const fetchCharacter = async () => {
       
+      
         const response = await axios.get(`http://localhost:3000/characterown/${id}`);
         const { name, status, species } = response.data;
         setName(name);
