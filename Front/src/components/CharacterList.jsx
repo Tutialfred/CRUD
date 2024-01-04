@@ -3,27 +3,7 @@ import { useEffect, useState } from "react";
 import { Outlet, Link } from "react-router-dom"
 import "./CharacterList.css"
 
-// function NavPage(props){
-//     return(
-//         <div>
-//             <p>Siguiente →</p>
-//             <button onClick={
-//                 () => {props.setPage(props.page + 1) }
-//             } className="boton2"> {props.page }</button>
-//         </div>
-//     )
-// }
 
-// function NavPage2(props){
-//     return(
-//         <div>
-//             <p>← Atras </p>
-//             <button onClick={
-//                 () => {props.setPage(props.page - 1) }
-//             } className="boton2"> {props.page -1}</button>
-//         </div>
-//     )
-// }
 
 function CharacterList(){
 
@@ -59,34 +39,26 @@ function CharacterList(){
             <li>
                 <Link to="/actualizar">Actualizar personaje</Link>
             </li>
-            
-            <li>
-                <Link to="/eliminar">Eliminar personaje</Link>
-            </li>
+
 
         </ul>
     </nav>
             </div>
 
 
-            {/* <div className="flecha">
-            <NavPage2 page={page} setPage={setPage}/>
-            <NavPage page={page} setPage={setPage}/>
-            </div> */}
-
             <div className="cartas-container">
 
               {
-                  characters.map(characters =>{
+                  characters.map(character =>{
                       return(
-                          <Link to={`/characters/${characters.id}`}key={characters.id} className="carta">
+                          <Link to={`/characters/${character.id}`}key={character.id} className="carta">
                   <div className="personaje">
                 <h2>Nombre</h2> 
-                <h3>{characters.name}</h3> 
+                <h3>{character.name}</h3> 
                 <h2>Estado</h2> 
-                <h3>{characters.status}</h3>
+                <h3>{character.status}</h3>
                 <h2>Especie</h2> 
-                <h3>{characters.species}</h3>
+                <h3>{character.species}</h3>
               </div>
             </Link>    
             )

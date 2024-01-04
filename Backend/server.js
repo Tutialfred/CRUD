@@ -11,32 +11,30 @@ app.use(cors({ origin: 'http://localhost:5173' })); // Configurar CORS para perm
 const characters = [];
 let idCounter = 1; // Inicialización del contador de IDs
 
-app.get("/characters/:id", async (req, res) => {
-  try {
-    const id = parseInt(req.params.id);
 
-    if (isNaN(id)) {
-      return res.status(400).json({ error: 'ID no valido. Se requiere un número entero.' });
-    }
 
-    const response = await axios.get(`http://localhost:3000/characterown/`);
-    const character = response.data?.[id];
 
-    if (character) {
-      return res.json(character);
-    }
+//! READ
 
-    res.status(404).json({ error: 'Personaje no encontrado' });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+app.get("/characters", (req, res) => {
+  res.json(characters)
+})
+
+
+app.get("/characters/:id", (req, res) => {
+
+  // Comprobar si el producto existe
+  const characterFound = characters.find( e => e.id === parseInt(req.params.id));
+
+  if(!characterFound){ // Si hay un error ↓ el producto no se encuentra, no existe
+      res.status(404).send("Error, no se encontro el Personaje")
+  } else{
+      res.json(characterFound);    
   }
 });
 
 
 
-app.get("/characters", (req, res) => {
-    res.json(characters)
-})
 
 
 

@@ -48,3 +48,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+.title{
+  color: rgb(0, 0, 0);
+  text-decoration: underline;
+}
+.back2{
+  position: relative;
+  left: 600px;
+}
