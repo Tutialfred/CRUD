@@ -34,49 +34,11 @@ app.get("/characters/:id", async (req, res) => {
 
 
 
-
-
 app.get("/characters", (req, res) => {
-  
     res.json(characters)
 })
 
 
-
-
-
-// app.get('/characters', async (req, res) => {
-//   const { name, status, species, id } = req.query;
-
-//   try {
-//     const response = await axios.get('https://rickandmortyapi.com/api/character/');
-
-//     let filteredCharacters = response.data.results;
-
-//     if (name) {
-//       filteredCharacters = filteredCharacters.filter(char => char.name.toLowerCase() === name.toLowerCase());
-//     }
-
-//     if (status) {
-//       filteredCharacters = filteredCharacters.filter(char => char.status.toLowerCase() === status.toLowerCase());
-//     }
-
-//     if (species) {
-//       filteredCharacters = filteredCharacters.filter(char => char.species.toLowerCase() === species.toLowerCase());
-//     }
-
-//     if (Object.keys(req.query).length === 0) {
-//       res.json(filteredCharacters);
-//     } else if (filteredCharacters.length > 0) {
-//       res.json(filteredCharacters);
-//     } else {
-//       console.log(error)
-//       res.status(404).json({ error: 'No se encontraron personajes con los criterios especificados' });
-//     }
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// });
 
 
 
