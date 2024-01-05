@@ -23,6 +23,8 @@ function CreateCharacter() {
       });
 
       console.log('Personaje creado:', response.data);
+      window.location.href = '/'; // Redirige a la página de personajes después de eliminar
+
       // Puedes realizar alguna acción después de crear el personaje, como actualizar la interfaz o redirigir a otra página
     } catch (error) {
       setErrorMessage(error.message);

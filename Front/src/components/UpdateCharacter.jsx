@@ -44,9 +44,10 @@ function UpdateCharacter() {
 
   return (
     <div className="update-character-container">
-  <a href="/" className="volver">
+  <a href={"/"} className="volver">
     {" "}
-    🡰 Volver
+    🡰 Volver      
+
   </a>   
       <h2>Actualizar Personaje</h2>
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}

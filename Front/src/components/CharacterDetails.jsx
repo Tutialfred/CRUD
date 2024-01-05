@@ -36,6 +36,31 @@ function CharacterDetails() {
     }
   };
 
+
+  const handleUpdate = async () => {
+    try {
+      await axios.put(`http://localhost:3000/characters/${id}`, {
+        name: updatedName || character.name, // Usa el valor actual si no se proporciona un valor nuevo
+        status: updatedStatus || character.status,
+        species: updatedSpecies || character.species,
+      });
+
+      const response = await axios.get(`http://localhost:3000/characters/${id}`);
+      setCharacter(response.data);
+
+      // Limpia los campos después de la actualización
+      setUpdatedName('');
+      setUpdatedStatus('');
+      setUpdatedSpecies('');
+    } catch (error) {
+      console.error('Error updating character:', error);
+    }
+  };
+
+
+
+
+
   return (
     <div>
       {character ? (
@@ -51,7 +76,10 @@ function CharacterDetails() {
           <h2>{character.status}</h2>
           <h2 className='title'>Especie:</h2> 
           <h2>{character.species}</h2>
+
           <button onClick={handleDelete} className='eliminate'>Eliminar</button>
+          {/* <Link to="/actualizar" >Actualizar</Link> */}
+          <a href="/actualizar"><button className='update' >Actualizar</button></a>
 
         </div>
       ) : (

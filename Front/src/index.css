@@ -4,8 +4,8 @@
   /* font-weight: 400; */
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #393939;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: hsl(120, 80%, 12%);
 
   /* font-synthesis: none; */
   /* text-rendering: optimizeLegibility; */
@@ -15,9 +15,10 @@
 
 a {
   font-weight: 500;
-  color: hsl(221, 100%, 62%);
+  color: hsl(214, 100%, 50%);
   text-decoration: inherit;
   position: relative;
+  font-size: 20px;
 
 }
 ul{
@@ -61,4 +62,19 @@ button {
   position: relative;
   left:1300px;
   top: -350px;
+  border: 1px solid black;
+  /* padding: 0px 15px; */
+
+}
+.update{
+  background-color: rgb(0, 65, 230);
+  position: relative;
+  left:1200px;
+  top: -280px;
+  width: 100px;
+  font-size: 16px;
+  /* border-radius: 5px; */
+  padding: 10px 15px !important;
+  color: white;
+  border: 1px solid black;
 }

@@ -35,11 +35,6 @@ function CharacterList(){
             <li>
                  <Link to="/create">Crear personaje</Link>
             </li>
-         
-            <li>
-            <Link to="/actualizar" >Actualizar</Link>
-            </li>
-
 
         </ul>
     </nav>
@@ -53,11 +48,11 @@ function CharacterList(){
                       return(
                           <Link to={`/characters/${character.id}`}key={character.id} className="carta">
                   <div className="personaje">
-                <h2>Nombre</h2> 
+                <h2 className="title2">Nombre:</h2> 
                 <h3>{character.name}</h3> 
-                <h2>Estado</h2> 
+                <h2 className="title2">Estado:</h2> 
                 <h3>{character.status}</h3>
-                <h2>Especie</h2> 
+                <h2 className="title2">Especie:</h2> 
                 <h3>{character.species}</h3>
               </div>
             </Link>    

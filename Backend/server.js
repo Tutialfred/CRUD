@@ -109,6 +109,23 @@ app.put('/characters/:id', (req, res) => {
 });
 
 
+// app.put("/characters/:id", (req, res) => {
+
+//   const newData = req.body
+
+//   // Comprobar si el producto existe
+//   const Productfound = characters.find( e => e.id === parseInt(req.params.id));
+
+//   // Si hay un error ↓ el producto no se encuentra, no existe
+//   if(!Productfound){
+//       return res.status(404).send("Error marisco no se encontro ❌")
+//   } 
+
+//   // Actualizar producto 'newData' → lo que le enviamos
+//   products = characters.map(e => e.id === parseInt(req.params.id) ? {e} : e)
+//   res.send("PRODUCTS UPDATING ✔")                    //Actualizar ↑     Conservar ↑ el producto    
+// });
+
 
 
 

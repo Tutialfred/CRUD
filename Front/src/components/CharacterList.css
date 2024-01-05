@@ -14,30 +14,36 @@
 
 
 
-
+  .personaje h3{
+    color: hsl(0, 0%, 52%);
+  }
   .cartas-container {
     display: flex;
-    flex-wrap: wrap; /* Esto permite el flujo en varias líneas */
-    gap: 20px; /* Espacio entre las cartas */
+    flex-wrap: wrap;
+    gap: 20px; 
   }
   
   .carta {
-    flex: 0 1 calc(33.3% - 20px); /* Cambia el tamaño de las cartas */
+    flex: 0 1 calc(20.3% - 100px); 
     box-sizing: border-box;
-    margin-bottom: 20px; /* Espacio inferior entre las cartas */
-    padding: 15px;
-    box-shadow: 4px 4px 4px rgb(0, 0, 0);
-    border: .7px solid white;
-  }
-  
-  .personaje {
+    margin-bottom: 20px; 
+    transition: background-color 1s;
     text-align: center;
+    background-color: rgb(5, 4, 4);
+    border-radius: 30px;
+   /
+  }
+  .carta:hover{
+    flex: 0 1 calc(20.3% - 100px); 
+    border: .1px solid rgb(252, 252, 252);
+
+    box-shadow: 5px 5px 6px rgb(255, 255, 255);
+    
+    transition: background-color 1s; 
+    /
   }
   
-  .personaje img {
-    max-width: 100%;
-  }
-  
-  .boton2{
-    background-color: rgb(0, 0, 0);
+.title2{
+        color: rgb(255, 255, 255);
+    text-decoration: underline;
   }
