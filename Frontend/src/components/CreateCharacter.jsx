@@ -16,7 +16,7 @@ function CreateCharacter() {
         throw new Error('El estado debe ser "alive", "dead" o "unknown"');
       }
 
-      const response = await axios.post('/characters', {
+      const response = await axios.post('https://crudbackend-xdgg.onrender.com/characters', {
         name,
         status,
         species,
