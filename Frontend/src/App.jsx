@@ -3,7 +3,8 @@ import { Routes, Route } from "react-router-dom"
 import CreateCharacter from "./components/CreateCharacter";
 import CharacterList from "./components/CharacterList";
 import CharacterDetails from "./components/CharacterDetails";
-
+import axios from "axios";
+// axios.defaults.baseURL=""
 function App (){
   return ( 
     <div>
