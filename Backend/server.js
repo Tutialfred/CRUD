@@ -77,36 +77,6 @@ app.get("/characterown", async (req, res) => {
 
 
 //! Actualizar un personaje por ID
-
-// app.put('/characters/:id', (req, res) => {
-//   const { id } = req.params;
-//   const { name, status, species } = req.body;
-
-//   const characterToUpdate = characters.find(char => char.id === parseInt(id));
-
-//   if (!characterToUpdate) {
-//     return res.status(404).json({ error: 'Personaje no encontrado' });
-//   }
-
-//   if (name) {
-//     const existingCharacter = characters.find(char => char.name.toLowerCase() === name.toLowerCase() && char.id !== parseInt(id));
-//     if (existingCharacter) {
-//       return res.status(400).json({ error: 'El nombre del personaje ya existe' });
-//     }
-//     characterToUpdate.name = name;
-//   }
-
-//   if (status) {
-//     characterToUpdate.status = status;
-//   }
-
-//   if (species) {
-//     characterToUpdate.species = species;
-//   }
-
-//   res.json(characterToUpdate);
-//   console.log(characters)
-// });
 app.put('/characters/:id', (req, res) => {
   const { id } = req.params;
   const { name, status, species } = req.body;
@@ -136,9 +106,7 @@ app.put('/characters/:id', (req, res) => {
     characterToUpdate.species = species;
   }
 
-  // En lugar de enviar solo el personaje actualizado, puedes guardar los cambios en tu base de datos
-  // o estructura de almacenamiento y enviar el estado de éxito como respuesta.
-  // En este ejemplo, estamos enviando el personaje actualizado como respuesta.
+
   res.json(characterToUpdate);
 });
 
