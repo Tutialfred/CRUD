@@ -4,7 +4,7 @@ import CreateCharacter from "./components/CreateCharacter";
 import CharacterList from "./components/CharacterList";
 import CharacterDetails from "./components/CharacterDetails";
 import axios from "axios";
-axios.defaults.baseURL="https://crudbackend-xdgg.onrender.com"
+axios.defaults.baseURL="https://crudbackend-xdgg.onrender.com/"
 function App (){
   return ( 
     <div>

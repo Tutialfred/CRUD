@@ -16,7 +16,7 @@ function CreateCharacter() {
         throw new Error('El estado debe ser "alive", "dead" o "unknown"');
       }
 
-      const response = await axios.post('http://localhost:3000/characters', {
+      const response = await axios.post('/characters', {
         name,
         status,
         species,

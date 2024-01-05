@@ -9,7 +9,7 @@ function CharacterDetails() {
   useEffect(() => {
     async function fetchCharacter() {
       try {
-        const response = await axios.get(`http://localhost:3000/characters/${id}`);
+        const response = await axios.get(`/characters/${id}`);
         setCharacter(response.data);
       } catch (error) {
         console.error('Error fetching character:', error);
@@ -21,7 +21,7 @@ function CharacterDetails() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3000/characters/${id}`);
+      await axios.delete(`/characters/${id}`);
       // Redirige a la página de personajes después de eliminar
       window.location.href = '/';
     } catch (error) {
@@ -32,7 +32,7 @@ function CharacterDetails() {
   const handleFieldUpdate = async (field, value) => {
     try {
       const updatedCharacter = { ...character, [field]: value };
-      await axios.put(`http://localhost:3000/characters/${id}`, updatedCharacter);
+      await axios.put(`/characters/${id}`, updatedCharacter);
       setCharacter(updatedCharacter);
     } catch (error) {
       console.error(`Error updating ${field}:`, error);

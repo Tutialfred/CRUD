@@ -17,7 +17,7 @@ function CharacterList(){
     useEffect(() => {
         async function getApi() {
           try {
-            const response = await fetch("http://localhost:3000/characterown");
+            const response = await fetch("/characterown");
             const data = await response.json();
             setCharacters(data);
           } catch (error) {
