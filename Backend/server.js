@@ -6,7 +6,7 @@ const cors = require('cors');
 
 app.listen(port);
 app.use(express.json());
-// app.use(cors({ origin: 'http://localhost:5173' })); // Configurar CORS para permitir solicitudes desde el puerto de tu aplicación de React
+app.use(cors({ origin: 'http://localhost:5173' })); // Configurar CORS para permitir solicitudes desde el puerto de tu aplicación de React
 
 const characters = [];
 let idCounter = 1; // Inicialización del contador de IDs
@@ -16,6 +16,9 @@ let idCounter = 1; // Inicialización del contador de IDs
 
 //! READ
 
+app.get("/", (req, res) => {
+  res.send("Home here")
+})
 app.get("/characters", (req, res) => {
   res.json(characters)
 })
