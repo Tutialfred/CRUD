@@ -17,7 +17,7 @@ function CharacterList(){
     useEffect(() => {
         async function getApi() {
           try {
-            const response = await fetch("/characterown");
+            const response = await fetch("https://crudbackend-xdgg.onrender.com/characterown");
             const data = await response.json();
             setCharacters(data);
           } catch (error) {
