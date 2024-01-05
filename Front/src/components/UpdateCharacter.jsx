@@ -1,97 +1,77 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import './updateCharacter.css';
 
-function UpdateCharacter() {
-  const [id, setId] = useState('');
-  const [name, setName] = useState('');
-  const [status, setStatus] = useState('');
-  const [species, setSpecies] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+function CharacterDetails() {
+  const { id } = useParams();
+  const [character, setCharacter] = useState(null);
 
   useEffect(() => {
-    // Lógica para obtener los datos del personaje a actualizar, por ejemplo, mediante un ID
-    const fetchCharacter = async () => {
-      
-      
-        const response = await axios.get(`http://localhost:3000/characterown/${id}`);
-        const { name, status, species } = response.data;
-        setName(name);
-        setStatus(status);
-        setSpecies(species);
-      
-    };
+    async function fetchCharacter() {
+      try {
+        const response = await axios.get(`http://localhost:3000/characters/${id}`);
+        setCharacter(response.data);
+      } catch (error) {
+        console.error('Error fetching character:', error);
+      }
+    }
 
-    // Llamar a la función para obtener los datos del personaje
     fetchCharacter();
   }, [id]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleDelete = async () => {
     try {
-      const response = await axios.put(`http://localhost:3000/characters/${id}`, {
-        name,
-        status,
-        species,
-      });
-
-      console.log('Personaje actualizado:', response.data);
-      // Puedes realizar alguna acción después de actualizar el personaje
+      await axios.delete(`http://localhost:3000/characters/${id}`);
+      // Redirige a la página de personajes después de eliminar
+      window.location.href = '/';
     } catch (error) {
-      setErrorMessage('Error al actualizar el personaje');
+      console.error('Error deleting character:', error);
+    }
+  };
+
+  const handleFieldUpdate = async (field, value) => {
+    try {
+      const updatedCharacter = { ...character, [field]: value };
+      await axios.put(`http://localhost:3000/characters/${id}`, updatedCharacter);
+      setCharacter(updatedCharacter);
+    } catch (error) {
+      console.error(`Error updating ${field}:`, error);
     }
   };
 
   return (
-    <div className="update-character-container">
-  <a href={"/"} className="volver">
-    {" "}
-    🡰 Volver      
+    <div>
+      {character ? (
+        <div>
+          <Link to="/" className="back2">
+            🡰 Volver
+          </Link>
+          <h2 className='title'>Nombre:</h2>
+          <input
+            type="text"
+            value={character.name}
+            onChange={(e) => handleFieldUpdate('name', e.target.value)}
+          />
+          <h2 className='title'>Estado:</h2>
+          <input
+            type="text"
+            value={character.status}
+            onChange={(e) => handleFieldUpdate('status', e.target.value)}
+          />
+          <h2 className='title'>Especie:</h2>
+          <input
+            type="text"
+            value={character.species}
+            onChange={(e) => handleFieldUpdate('species', e.target.value)}
+          />
 
-  </a>   
-      <h2>Actualizar Personaje</h2>
-      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-      <form className="form-container" onSubmit={handleSubmit}>
-        <label>
-          ID del Personaje:
-          <input
-            type="text"
-            value={id}
-            onChange={(e) => setId(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Nombre:
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Estado (alive, dead, unknown):
-          <input
-            type="text"
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Especie:
-          <input
-            type="text"
-            value={species}
-            onChange={(e) => setSpecies(e.target.value)}
-          />
-        </label>
-        <br />
-        <button type="submit">Actualizar Personaje</button>
-      </form>
+          <button onClick={handleDelete} className='eliminate'>Eliminar</button>
+        </div>
+      ) : (
+        <p>Cargando...</p>
+      )}
     </div>
   );
 }
 
-export default UpdateCharacter;
+export default CharacterDetails;
