@@ -48,5 +48,5 @@
 .title2{
         color: rgb(255, 255, 255);
     text-decoration: underline;
-    font-size: 30px;
+    font-size: 25px !important;
   }
