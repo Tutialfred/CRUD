@@ -31,7 +31,7 @@
     text-align: center;
     background-color: rgb(5, 4, 4);
     border-radius: 30px;
-    height: 200px;
+    max-height: 450px;
    /
   }
   .carta:hover{
