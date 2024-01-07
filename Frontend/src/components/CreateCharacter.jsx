@@ -41,6 +41,8 @@ function CreateCharacter() {
       <form onSubmit={handleSubmit} className="form-container">
         <label className="form-label">
           Nombre:
+          <br />
+          <br />
           <input
             type="text"
             value={name}
@@ -50,6 +52,8 @@ function CreateCharacter() {
         </label>
         <label className="form-label">
           Estado (alive, dead, unknown):
+          <br />
+          <br />
           <input
             type="text"
             value={status}
@@ -59,6 +63,8 @@ function CreateCharacter() {
         </label>
         <label className="form-label">
           Especie:
+          <br />
+          <br />
           <input
             type="text"
             value={species}
